@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:test_app/consts.dart';
 import 'package:test_app/services/stripe_service.dart';
 
 Future<void> main() async {
+  await _setup();
   runApp(const MyApp());
+}
+
+Future<void> _setup() async {
+ WidgetsFlutterBinding.ensureInitialized();
+ Stripe.publishableKey = stringPublishableKey;
 }
 
 class MyApp extends StatelessWidget {
